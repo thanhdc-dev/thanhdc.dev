@@ -1,0 +1,78 @@
+$font-regular: Open-Sans;
+$font-bold: OpenSans-Bold;
+$primary-color: #f29f29;
+$border-color: #e6e6e6;
+.woocommerce {
+    ul.products {
+        &.columns-4 li.product {
+            width: calc((100% - 40px) / 4);
+            margin-right: calc(40px / 4);
+        }
+        li.product {
+            padding: 10px;
+            border: 1px solid $border-color;
+            .product-inner {
+                overflow: hidden;
+                &:hover {
+                    img {
+                        margin-top: -10px;
+                        margin-bottom: 24px;
+                    }
+                }
+                .woocommerce-loop-product__title {
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #555;
+                    margin: 0;
+                }
+                .price {
+                    line-height: 28px;
+                    display: flex;
+                    .woocommerce-Price-amount * {
+                        font-size: 18px;
+                        font-family: $font-bold;
+                        color: #222;
+                    }
+                    del {
+                        margin-right: 10px;
+                        display: block;
+                        .woocommerce-Price-amount * {
+                            color: #707070;
+                            font-size: 16px;
+                        }
+                    }
+                    ins {
+                        display: block;
+                        text-decoration: none;
+                    }
+                }
+                .add_to_cart_button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px 7px;
+                    text-align: center;
+                    font-size: 13px;
+                    text-transform: uppercase;
+                    border-radius: 3px;
+                    -moz-border-radius: 3px;
+                    -webkit-border-radius: 3px;
+                    min-height: 41px;
+                    background-color: #f29f29;
+                    color: #fff;
+                    font-family: OpenSans-Bold;
+                }
+            }
+        }
+    }
+    .breadcrumb {
+        color: $primary-color;
+    }
+    .star-rating:before,
+    .star-rating span:before {
+        font-family: fontawesome !important;
+        content: "\f005\f005\f005\f005\f005" !important;
+        font-size: 12px;
+        width: fit-content !important;
+    }
+}

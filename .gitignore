@@ -1,0 +1,20 @@
+# Configuration
+wp-config.php
+
+# Example themes
+/wp-content/themes/twenty*/
+/wp-content/themes/storefront
+
+# Log files
+*.log
+
+# htaccess
+/.htaccess
+
+#laravel mix
+/wp-content/themes/my-theme/laravel-mix/node_modules
+
+#IDE
+.vscode
+.DS_Store
+.idea

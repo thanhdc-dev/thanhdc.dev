@@ -1,0 +1,21 @@
+@font-face {
+    font-family: Open-Sans;
+    src: url('../fonts/OpenSans-Regular.woff2');
+}
+
+@font-face {
+    font-family: OpenSans-Bold;
+    src: url('../fonts/OpenSans-Bold.woff2');
+}
+
+@font-face {
+    src: url('../fonts/fa-brands-400.woff2');
+}
+
+@font-face {
+    src: url('../fonts/fa-regular-400.woff2');
+}
+
+@font-face {
+    src: url('../fonts/fa-solid-900.woff2');
+}
