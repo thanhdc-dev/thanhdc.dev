@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font metrics overrides to prevent layout shifts */
+/* DM Mono - Regular */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/dm-mono-400.woff2') format('woff2');
+  size-adjust: 100%;
+  ascent-override: 95%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+
+/* DM Mono - Regular Italic */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/dm-mono-400-italic.woff2') format('woff2');
+  size-adjust: 100%;
+  ascent-override: 95%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+
+/* DM Mono - Light */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/dm-mono-300.woff2') format('woff2');
+  size-adjust: 100%;
+  ascent-override: 95%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+
+/* DM Mono - Light Italic */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/dm-mono-300-italic.woff2') format('woff2');
+  size-adjust: 100%;
+  ascent-override: 95%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+
+/* DM Mono - Medium */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/dm-mono-500.woff2') format('woff2');
+  size-adjust: 100%;
+  ascent-override: 95%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+
+/* DM Mono - Medium Italic */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/dm-mono-500-italic.woff2') format('woff2');
+  size-adjust: 100%;
+  ascent-override: 95%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+
+/* Fraunces - Regular */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/fraunces-300.woff2') format('woff2');
+  size-adjust: 101%;
+  ascent-override: 87%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+/* Fraunces - Regular Italic */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/fraunces-300-italic.woff2') format('woff2');
+  size-adjust: 101%;
+  ascent-override: 87%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+/* Fraunces - Bold */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/fraunces-700.woff2') format('woff2');
+  size-adjust: 101%;
+  ascent-override: 87%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+/* Fraunces - Bold Italic */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/fraunces-700-italic.woff2') format('woff2');
+  size-adjust: 101%;
+  ascent-override: 87%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+/* CSS Variables for theme */
+:root {
+  --color-bg: #0a0a0a;
+  --color-surface: #111111;
+  --color-border: #1f1f1f;
+  --color-muted: #8a8a8a;
+  --color-dim: #9a9a9a;
+  --color-base: #c8c8c8;
+  --color-bright: #f0ece4;
+}
+
+html.light {
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f5;
+  --color-border: #e0e0e0;
+  --color-muted: #999999;
+  --color-dim: #666666;
+  --color-base: #333333;
+  --color-bright: #0a0a0a;
+}
+
+body {
+  font-family: 'DM Mono', monospace;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* Top shimmer line on card hover */
+.card-gold::after,
+.card-blue::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.card-gold::after {
+  background: linear-gradient(90deg, transparent, #d4a96a, transparent);
+}
+
+.card-blue::after {
+  background: linear-gradient(90deg, transparent, #6a9fd4, transparent);
+}
+
+.card-gold:hover::after,
+.card-blue:hover::after {
+  opacity: 1;
+}
+
+/* Preview fade-to-surface at bottom */
+.preview-fade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, var(--color-surface) 100%);
+  pointer-events: none;
+}
+
+/* iframe scaled to fit preview area */
+.iframe-scale {
+  width: 150%;
+  height: 150%;
+  transform: scale(0.667);
+  transform-origin: top left;
+  pointer-events: none;
+  border: none;
+  filter: saturate(0.85) brightness(0.9);
+  transition: filter 0.5s;
+}
+
+.card-gold:hover .iframe-scale,
+.card-blue:hover .iframe-scale {
+  filter: saturate(1) brightness(1);
+}

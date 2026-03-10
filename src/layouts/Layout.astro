@@ -1,0 +1,59 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+import '../styles/base.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+const { title = 'thanhdc.dev — Products', description = 'Bộ sưu tập sản phẩm của ThanhDC' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="vi" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="ThanhDC" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Preload critical fonts for faster rendering -->
+    <link rel="preload" href="/fonts/dm-mono-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Initialize theme before page paints to avoid flash -->
+    <script is:inline>
+      (function () {
+        const saved = localStorage.getItem('theme');
+        const isLight = saved
+          ? saved === 'light'
+          : window.matchMedia('(prefers-color-scheme: light)').matches;
+
+        if (isLight) {
+          document.documentElement.classList.add('light');
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.remove('light');
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+
+  <body class="bg-bg text-base min-h-screen overflow-x-hidden">
+    <ThemeToggle />
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: 'DM Mono', monospace;
+  }
+</style>

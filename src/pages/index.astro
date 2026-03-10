@@ -1,17 +1,59 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { projects } from '../data/projects';
 
+const animationDelays = ['animate-fade-up', 'animate-fade-up-1', 'animate-fade-up-2', 'animate-fade-up-3'];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="thanhdc.dev — Products" description="Bộ sưu tập sản phẩm của ThanhDC">
+  <!-- ── Header ── -->
+  <header class="max-w-4xl mx-auto px-5 sm:px-8 pt-14 sm:pt-20 pb-6 animate-fade-up">
+    <p class="font-mono text-[14px] tracking-[0.2em] uppercase text-gold mb-4">
+      thanhdc.dev &mdash; portfolio
+    </p>
+    <p class="mt-4 text-dim text-[13px] leading-[1.8] max-w-md">
+      Bộ sưu tập của ThanhDC
+    </p>
+  </header>
+
+  <!-- ── Divider ── -->
+  <div class="max-w-4xl mx-auto px-5 sm:px-8 my-8 flex items-center gap-4 animate-fade-up">
+    <div class="flex-1 h-px bg-border"></div>
+    <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-muted">0{projects.length} projects</span>
+    <div class="flex-1 h-px bg-border"></div>
+  </div>
+
+  <!-- ── Products ── -->
+  <section class="max-w-4xl mx-auto px-5 sm:px-8 pb-20 flex flex-col gap-0.5">
+    {
+      projects.map((project, index) => (
+        <ProductCard
+          id={project.id}
+          number={project.number}
+          total={project.total}
+          title={project.title}
+          url={project.url}
+          domain={project.domain}
+          description={project.description}
+          tags={project.tags}
+          cardColor={project.cardColor}
+          accentColor={project.accentColor}
+          previewUrl={project.previewUrl}
+          animationDelay={animationDelays[index + 1] || 'animate-fade-up'}
+        />
+      ))
+    }
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="border-t border-border py-8 text-center animate-fade-up-3">
+    <p class="font-mono text-[12px] tracking-[0.1em] text-muted">
+      &copy; 2025
+      <a href="https://thanhdc.dev" class="text-dim hover:text-gold transition-colors duration-200">
+        thanhdc.dev
+      </a>
+      &mdash; by ThanhDC
+    </p>
+  </footer>
+</Layout>
